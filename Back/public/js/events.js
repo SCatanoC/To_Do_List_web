@@ -23,7 +23,9 @@ let currentEditId = null;
 
 export async function loadTasks() {
   try {
-    const res = await fetch("http://localhost:3000/api/tasks");
+    const res = await fetch(
+      "https://to-do-list-web-cxfx.onrender.com/api/tasks"
+    );
     const data = await res.json();
     taskArr.splice(0, taskArr.length, ...data);
     updateTaskContainer();
@@ -43,11 +45,14 @@ btnAdd.addEventListener("click", async () => {
   console.log("Categoría seleccionada:", category);
 
   try {
-    const res = await fetch("http://localhost:3000/api/tasks", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ taskTitle: title, category }),
-    });
+    const res = await fetch(
+      "https://to-do-list-web-cxfx.onrender.com/api/tasks",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ taskTitle: title, category }),
+      }
+    );
 
     const newTask = await res.json();
     taskArr.push(newTask);
@@ -64,14 +69,17 @@ export async function completeBox(id) {
     return;
   }
   const newStatus = !task.complete;
-  const res = await fetch(`http://localhost:3000/api/tasks/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      taskTitle: task.taskTitle /*título*/,
-      complete: newStatus /*estado*/,
-    }),
-  });
+  const res = await fetch(
+    `https://to-do-list-web-cxfx.onrender.com/api/tasks/${id}`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        taskTitle: task.taskTitle /*título*/,
+        complete: newStatus /*estado*/,
+      }),
+    }
+  );
 
   const updated = await res.json();
   updated.id = Number(updated.id);
@@ -89,7 +97,7 @@ export async function deleteTask(buttonEl) {
   const id = parseInt(buttonEl.dataset.id);
 
   try {
-    await fetch(`http://localhost:3000/api/tasks/${id}`, {
+    await fetch(`https://to-do-list-web-cxfx.onrender.com/api/tasks/${id}`, {
       method: "DELETE",
     });
 
@@ -123,14 +131,17 @@ confirmEditBtn.addEventListener("click", async () => {
 
   const old = taskArr.find((t) => t.id === currentEditId);
 
-  const res = await fetch(`http://localhost:3000/api/tasks/${currentEditId}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      taskTitle: newTitle,
-      complete: old.complete,
-    }),
-  });
+  const res = await fetch(
+    `https://to-do-list-web-cxfx.onrender.com/api/tasks/${currentEditId}`,
+    {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        taskTitle: newTitle,
+        complete: old.complete,
+      }),
+    }
+  );
 
   if (!res.ok) {
     throw new Error("Error en la respuesta del servidor");
