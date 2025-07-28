@@ -1,0 +1,488 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+:root {
+  --main-color: #151a1a;
+  --section-main-color: #010505;
+  --button-bg-color: #239696;
+  --input-field: #000;
+  --btn-delete: #c1292e;
+  --main-font-color: #fff;
+  --font-color-catetask: #b0aeae;
+
+  --categorybtn-color: #151a1a;
+  --sel-color: #4bc551;
+  --hover-color: #3a5959;
+  --hover-edit: #196d6d;
+  --hover-delete: #5d1417;
+
+  --task-shadow-c: #c549ea;
+}
+
+/*category colors*/
+
+.category-task-btn.Work {
+  background-color: #bed334;
+}
+
+.category-task-btn.Others {
+  background-color: #60a5fa;
+}
+
+.category-task-btn.Home {
+  background-color: #34d399;
+}
+.category-task-btn.University {
+  background-color: #d33461;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+body {
+  background-color: var(--main-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/**/
+.main-container {
+  position: relative;
+  margin-top: 50px;
+  width: 500px;
+  min-height: 500px;
+  background-color: var(--section-main-color);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0px 5px 20px var(--button-bg-color);
+}
+
+.main-container h1 {
+  color: var(--main-font-color);
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/*Input field styles*/
+.main-container .container-add-task {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.main-container .container-add-task .container-task-input {
+  display: flex;
+  gap: 10px;
+}
+
+.main-container .container-add-task .container-task-input .input-task {
+  width: 85%;
+  height: 55px;
+  border-radius: 6px;
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  outline: none;
+  color: var(--main-font-color);
+  background-color: var(--input-field);
+  box-shadow: 1px 1px 4px var(--button-bg-color);
+}
+
+.main-container .container-add-task .container-task-input .btn {
+  display: flex;
+  width: 15%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--button-bg-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 30px;
+}
+
+/*category styles*/
+
+.main-container .container-add-task .category-select {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  transition: all 0.3s ease-in;
+}
+
+.main-container .container-add-task .category-select .category-btn {
+  border-radius: 8px;
+  padding: 4px 0px;
+  width: 22%;
+  color: var(--font-color-catetask);
+  background-color: var(--categorybtn-color);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.main-container .container-add-task .category-select .category-btn:hover {
+  color: var(--font-color-catetask);
+  background-color: var(--hover-color);
+  transition: all 0.5s ease-in;
+}
+
+.main-container .container-add-task .category-select .category-btn.selected {
+  background-color: var(--sel-color);
+  color: #000;
+  transition: all 0.3s ease-in;
+}
+
+/*Filters Styles*/
+
+.main-container .filters {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+}
+
+.main-container .filters .btn-filter {
+  width: 25%;
+  height: 28px;
+  border-radius: 8px;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  background-color: var(--categorybtn-color);
+  color: var(--font-color-catetask);
+  transition: all 0.3s ease-in;
+}
+
+.main-container .filters .btn-filter.selected {
+  background-color: var(--sel-color);
+  color: black;
+  transition: all 0.3s ease-in;
+}
+
+.main-container .filters .btn-filter:hover {
+  background-color: var(--hover-color);
+  color: var(--font-color-catetask);
+  transition: all 0.3s ease-in;
+}
+
+/*task conteiner*/
+
+.main-container .list-task {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.main-container .list-task .task {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-height: 60px;
+  margin-bottom: 15px;
+  padding: 10px 10px;
+  border: 5px solid #000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px var(--task-shadow-c);
+}
+
+.main-container .list-task .task .task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container .list-task .task .validation-conteiner {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--main-font-color);
+  width: 75%;
+  margin-right: 5px;
+  gap: 10px;
+  box-sizing: border-box;
+}
+.main-container .list-task .task .validation-conteiner h2 {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.main-container .list-task .task .btn-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 25%;
+  gap: 5px;
+}
+
+.main-container .list-task .task .btn-container .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.main-container .list-task .task .btn-container .btn.edit {
+  background-color: var(--button-bg-color);
+  transition: all 0.3s ease-in;
+}
+
+.main-container .list-task .task .btn-container .btn.edit:hover {
+  background-color: var(--hover-edit);
+  transition: all 0.3s ease-in;
+}
+
+.main-container .list-task .task .btn-container .btn.delete {
+  background-color: var(--btn-delete);
+  transition: all 0.3s ease-in;
+}
+
+.main-container .list-task .task .btn-container .btn.delete:hover {
+  background-color: var(--hover-delete);
+  transition: all 0.3s ease-in;
+}
+
+.main-container .container-add-task h2 {
+  color: var(--main-font-color);
+  font-weight: 400;
+  text-align: center;
+}
+
+.main-container .container-add-task .line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--font-color-catetask);
+}
+.main-container .list-task .task .update-category {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.main-container .list-task .task .update-category .category-task-btn {
+  padding: 2px;
+  width: 60px;
+  font-size: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+.main-container .list-task .task .update-category .completion-time {
+  width: 80px;
+  text-align: center;
+}
+
+.completed {
+  text-decoration-color: #000;
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.validation-conteiner input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--button-bg-color);
+  cursor: pointer;
+}
+
+/*modal styles*/
+
+.modal,
+.zoom-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(101, 114, 122, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal .modal-conteiner {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+  height: auto;
+  background-color: var(--section-main-color);
+  align-items: center;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.modal .modal-conteiner h2 {
+  margin-bottom: 8px;
+  color: var(--main-font-color);
+}
+
+.modal .modal-conteiner input {
+  width: 85%;
+  height: 35px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  color: var(--main-font-color);
+  background-color: var(--input-field);
+  box-shadow: 1px 1px 4px var(--button-bg-color);
+}
+
+.modal .modal-conteiner .btn-modal {
+  display: flex;
+  justify-content: space-between;
+  width: 238px;
+  margin-bottom: 8px;
+}
+
+.modal .modal-conteiner .btn-modal .confirm-edit,
+.modal .modal-conteiner .btn-modal .cancel-edit {
+  border-radius: 6px;
+  padding: 4px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+.modal .modal-conteiner .btn-modal .confirm-edit {
+  background-color: var(--button-bg-color);
+}
+
+.modal .modal-conteiner .btn-modal .cancel-edit {
+  background-color: var(--btn-delete);
+}
+
+/*zomm modal styles*/
+
+.zoom-modal .zoom-container {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 300px;
+  max-width: 500px;
+  height: auto;
+  background-color: var(--section-main-color);
+  align-items: center;
+  padding: 25px 20px;
+  border-radius: 20px;
+}
+
+.zoom-modal .zoom-container h2 {
+  display: block;
+  word-break: break-word;
+  width: 100%;
+  color: var(--main-font-color);
+  text-align: center;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--input-field);
+  box-shadow: 1px 1px 4px var(--button-bg-color);
+}
+
+.zoom-modal .zoom-container .zoom-btn {
+  margin-top: 10px;
+  width: 60px;
+  padding: 5px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  color: var(--main-font-color);
+  background-color: var(--main-color);
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 400px) {
+  .main-container h1 {
+    font-size: 30px;
+  }
+
+  .main-container .container-add-task .container-task-input .input-task {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .main-container .container-add-task .container-task-input .btn {
+    height: 40px;
+  }
+
+  .main-container h2 {
+    font-size: 15px;
+  }
+
+  .main-container .container-add-task .category-select .category-btn {
+    font-size: 10px;
+  }
+
+  .main-container .filters .btn-filter {
+    font-size: 10px;
+  }
+
+  .main-container .list-task .task .validation-conteiner h2 {
+    font-size: 15px;
+  }
+
+  .main-container .list-task .task .btn-container .btn {
+    font-size: 15px;
+  }
+
+  .validation-conteiner input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .main-container h1 {
+    font-size: 25px;
+  }
+
+  .main-container .container-add-task .container-task-input .input-task {
+    height: 35px;
+    font-size: 10px;
+  }
+
+  .main-container .container-add-task .container-task-input .btn {
+    height: 30px;
+  }
+
+  .main-container h2 {
+    font-size: 13px;
+  }
+
+  .main-container .container-add-task .category-select .category-btn {
+    font-size: 8px;
+  }
+
+  .main-container .filters .btn-filter {
+    font-size: 8px;
+  }
+}
